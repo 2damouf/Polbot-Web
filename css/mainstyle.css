@@ -1,0 +1,110 @@
+body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #74b9ff, #d63031);
+}
+
+.panel {
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.button {
+    padding: 15px 30px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.green-button {
+    background-color: #4CAF50;
+    color: white;
+    width: 190px;
+    height: 100px;
+}
+
+.blue-button {
+    background-color: #2196F3;
+    color: white;
+    width: 190px;
+    height: 100px;
+}
+
+.orange-button {
+    background-color: #FF9800;
+    color: white;
+    width: 190px;
+    height: 100px;
+}
+
+.yellow-button {
+    background-color: #FFD700;
+    color: white;
+    width: 190px;
+    height: 100px;
+}
+.exit-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #FF0000; /* Kırmızı renk */
+    color: white;
+}
+
+.language-container {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    display: flex; /* Flex düzeni aktif */
+}
+
+.flag-icon {
+    width: 32px;
+    height: 24px;
+    margin-right: 10px;
+    cursor: pointer;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.tr-flag {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Flag_of_Turkey.svg/2000px-Flag_of_Turkey.svg.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.gb-flag {
+    background-image: url("https://i4.hurimg.com/i/hurriyet/75/1200x675/55ea65fdf018fbb8f87d5486.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.flag-icon.small {
+    width: 24px;
+    height: 14px;
+}
+
+
+/* Diğer stiller */

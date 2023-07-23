@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/mainstyle.css">
+    <title>Ana Menu</title>
+</head>
+
+<body>
+    <div class="container">
+        <button class="button green-button" id="customer" onclick="window.location.href='customers.html'">Müşterileri Yönet</button>
+        <button class="button blue-button" id="newClient" onclick="window.location.href='addclient.html'">Yeni Müşteri Ekle</button>
+        <button class="button orange-button" id="reservation" onclick="window.location.href='reservations.html'">Alınan Randevular</button>
+        <button class="button yellow-button" id="setting" onclick="window.location.href='settings.html'">Ayarlar</button>
+        <i class="fas fa-sign-out exit-icon" onclick="exitFunction()"></i>
+    </div>
+
+    <div class="language-container">
+        <div class="flag-icon tr-flag" id="flag-tr" style="opacity: 0.5" onclick="changeLanguage('tr')"></div>
+        <div class="flag-icon gb-flag" id="flag-gb" style="opacity: 1" onclick="changeLanguage('en')"></div>
+    </div>
+
+    <script src="scripts/mainscript.js"></script>
+</body>
+</html>
