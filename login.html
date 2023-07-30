@@ -12,25 +12,28 @@
 
     <div class="container my-5 d-flex justify-content-center">
         <div class="col-6">
-            <div class="card">
-                <div class="card-header">PolBot Yönetici Giriş</div>
+            <div class="card-login">
+                <div class="card-header">PolBot Üye Girişi</div>
                 <div class="card-body">
                     <form id="login-form">
                         <!-- Form alanları -->
                         <div class="form-group">
                             <label for="username">Kullanıcı Adı</label>
                             <input type="text" class="form-control" id="username" placeholder="Enter Username">
+
                         </div>
                         <div class="form-group">
                             <label for="password">Şifre</label>
                             <input type="password" class="form-control" id="password" placeholder="Enter Password">
+                            <label class="float-right" for="forgotPassword" pointer="cursor" onclick=resetPassword()>Şifremi Unuttum</label>
                         </div>
                         <!-- Form alanları -->
     
                         <!-- Butonlar -->
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-primary btn-block">Giriş Yap</button>
-                            <button type="button" class="btn btn-success btn-register">Kayıt Ol</button>
+                            <button type="button" class="btn btn-success btn-register" onclick="window.location.href='register.html'">Kayıt Ol</button>
+                           
                         </div>
                         <!-- Butonlar -->
                     </form>
@@ -39,6 +42,37 @@
         </div>
     </div>
     
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            if (localStorage.getItem('token') !== null && localStorage.getItem('token') !== undefined) {
+                window.location.href = "main.html";
+            }
+        })
+        
+        async function resetPassword(event) {
+            const user = "admin"
+            const mail = "hasim.anil95@gmail.com"
+            console.log(user)
+            console.log(mail)
+            const result = await fetch('http://localhost:9999/api/forgot-password', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    user,
+                    mail
+                })
+            }).then((res) => res.json())
+        
+            if (result.status === 'ok') {
+                alert('Giriş Başarılı')
+            } else {
+                alert(result.error)
+            }
+        }
+        
+    </script>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>

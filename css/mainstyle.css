@@ -32,32 +32,40 @@ body {
     font-weight: bold;
 }
 
-.green-button {
+.customer-button {
     background-color: #4CAF50;
     color: white;
-    width: 190px;
-    height: 100px;
+    width: 200px;
+    height: 130px;
+    border-radius: 20px;
+    padding: 10px 20px;
 }
 
-.blue-button {
+.newclient-button {
+    background-color: #4db51d;
+    color: white;
+    width: 200px;
+    height: 130px;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+
+.reservation-button {
     background-color: #2196F3;
     color: white;
-    width: 190px;
-    height: 100px;
+    width: 200px;
+    height: 130px;
+    border-radius: 20px;
+    padding: 10px 20px;
 }
 
-.orange-button {
-    background-color: #FF9800;
+.settings-button {
+    background-color: #ff4fd6;
     color: white;
-    width: 190px;
-    height: 100px;
-}
-
-.yellow-button {
-    background-color: #FFD700;
-    color: white;
-    width: 190px;
-    height: 100px;
+    width: 200px;
+    height: 130px;
+    border-radius: 20px;
+    padding: 10px 20px;
 }
 .exit-icon {
     position: absolute;
@@ -70,6 +78,8 @@ body {
     border-radius: 5px;
     background-color: #FF0000; /* Kırmızı renk */
     color: white;
+    border-radius: 20px;
+    padding: 10px 20px;
 }
 
 .language-container {

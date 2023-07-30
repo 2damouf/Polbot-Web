@@ -1,0 +1,152 @@
+body {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #74b9ff, #d63031);
+  }
+  
+  .container {
+    display: none;
+    height: 500px;
+    width: 500px;
+    text-align: center;
+    border: 2px solid #ccc;
+    padding: 30px; /* Konteyneri biraz daha büyütmek için padding değerini arttırdık */
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    margin: 20px; /* Sayfa kenarlarından boşluk bırakmak için margin değerini ekledik */
+    position: relative; 
+  }
+
+  .container.active {
+    display: block;
+  }
+  
+  .userListContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    font-size: 18px;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  li:hover {
+    background-color: #f2f2f2;
+  }
+
+  /* Diğer stiller aynı kalmaktadır, sadece pagination stilleri eklendi */
+.pagination {
+    margin-top: 20px;
+  }
+  
+  .pagination button {
+    padding: 8px 16px;
+    background-color: #f2f2f2;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 0 5px;
+  }
+  
+  .pagination button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+
+  /* Panel stilleri */
+  .panel {
+    display: none;
+    height: 500px;
+    width: 500px;
+    text-align: center;
+    border: 2px solid #ccc;
+    padding: 30px; /* Konteyneri biraz daha büyütmek için padding değerini arttırdık */
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    margin: 20px; /* Sayfa kenarlarından boşluk bırakmak için margin değerini ekledik */
+    position: relative; /* Paneli baz alarak kapatma butonunu konumlandıracağız */
+  }
+
+.panel.active {
+  display: block;
+}
+
+#closeBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+
+#mainMenuBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+#userForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* TextBox stilleri */
+input[type="text"] {
+  width: 300px; /* TextBox genişliğini istediğiniz gibi ayarlayabilirsiniz */
+  height: 40px; /* TextBox yüksekliğini istediğiniz gibi ayarlayabilirsiniz */
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Kaydet butonu stilleri */
+#saveBtn {
+  width: 100px;
+  height: 40px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#saveBtn:hover {
+  background-color: #45a049;
+}
+
+
+label {
+    flex: 1;
+    text-align: right;
+    margin-right: 10px;
+  }
+  

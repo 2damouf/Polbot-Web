@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+    <title>PolBot Yönetim Formu</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="container my-5 d-flex justify-content-center">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">PolBot Kayıt Ol</div>
+                <div class="card-body">
+                    <form id="login-form">
+                        <!-- Form alanları -->
+                        <div class="form-group">
+                            <label for="username">Mail</label>
+                            <input type="text" class="form-control" id="mail" placeholder="Enter Mail">
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Kullanıcı Adı</label>
+                            <input type="text" class="form-control" id="username" placeholder="Enter Username">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Şifre</label>
+                            <input type="password" class="form-control" id="password" placeholder="Enter Password">
+                        </div>  
+                        <div class="form-group">
+                            <label for="password">Tekrar Şifre</label>
+                            <input type="password" class="form-control" id="repassword" placeholder="Enter Re-Password">
+                        </div>  
+                        <!-- Form alanları -->
+    
+                        <!-- Butonlar -->
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success btn-register" onclick=registerUser()>Kayıt Ol</button>
+                        </div>
+                        <!-- Butonlar -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+<script>
+    const formLogin = document.getElementById('login-form')
+    formLogin.addEventListener('submit', registerUser)
+
+
+    async function registerUser(event) {
+
+        event.preventDefault()
+        const mail = document.getElementById('mail').value
+        const username = document.getElementById('username').value
+        const password = document.getElementById('password').value
+        const repassword = document.getElementById('repassword').value
+        if (password !== repassword) {
+            alert("Şifreler uyuşmuyor.")
+            return
+        }
+        console.log(username)
+        console.log(password)
+        const result = await fetch('http://localhost:9999/api/register', {
+         method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                mail,
+                username,
+                password
+            })
+        }).then((res) => res.json())
+
+        if (result.status === 'ok') {
+            alert('Başarıyla Kayıt Oldun')
+            window.location.href = "main.html";
+        } else {
+            alert(result.error)
+        }
+    }
+</script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,3 +1,4 @@
+// dil değiştirme fonksiyonu
 function changeLanguage(language) {
     if (language === 'tr') {
         console.log("Türkçe dil seçildi. İşlemleriniz Türkçe olarak devam edecek.");
@@ -12,17 +13,15 @@ function changeLanguage(language) {
     }
 }
 
-function exitFunction() {
-    window.location.href = 'login.html'
-}
 
 
+// tıklanan bayrağı pasifleştirmek için
 function disableElement(element) {
     const eelement = document.getElementById(element);
     eelement.disabled = true;
     eelement.style.opacity = 0.5;
 }
-
+// diğer bayrağı aktifleştirmek için
 function enableElement(element) {
     const eelement = document.getElementById(element);
     eelement.disabled = false;
@@ -31,10 +30,7 @@ function enableElement(element) {
     eelement.style.opacity = 1;
 }
 
-function addClientMenu() {
-    window.location.href = "addclient.html";
-}
-
+// ingilizce seçilirse elementlerin yazılarını güncelleyelim
 function english() {
     const menu1 = document.getElementById('customer');
     const menu2 = document.getElementById('newClient');
@@ -47,6 +43,7 @@ function english() {
     document.title = "Main Menu";
 }
 
+// türkçe seçilirse elementlerin yazılarını güncelleyelim
 function turkish() {
     const menu1 = document.getElementById('customer');
     const menu2 = document.getElementById('newClient');
@@ -59,3 +56,38 @@ function turkish() {
     document.title = "Main Menu";
 }
 
+// dom content tamamlandığında, eğer local storage'da token girili değilse, kullanıcı direk main.html'i açamasın diye kontrol yapalım.
+// eğer token varsa, token validation yapalım.
+document.addEventListener("DOMContentLoaded", async function() {
+    try {
+        if (localStorage.getItem('token') === null || localStorage.getItem('token') === undefined) {
+            window.location.href = "login.html";
+        } else
+        {
+            const token = localStorage.getItem('token')
+            const result = await fetch('http://localhost:9999/api/token-login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    token,
+                })
+            }).then((res) => res.json())
+        
+            if (result.status === 'ok') {
+               
+            } else {
+                exitFunction();
+            }
+        }
+    } catch (error) {
+        exitFunction();
+    }
+})
+
+// logout fonksiyon
+function exitFunction() {
+    localStorage.removeItem('token');
+    window.location.href = 'login.html'
+}
