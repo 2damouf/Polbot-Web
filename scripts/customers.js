@@ -6,8 +6,8 @@
 
 
   // customer listesini almak için istek yollayalım
-  async function sendRequest(){
-
+  async function getCustomerListRequest(){
+    users.length = 0;
     const token = localStorage.getItem('token')
     const result = await fetch('http://localhost:9999/apiv2/get-customer-list', {
         method: 'POST',
@@ -41,7 +41,7 @@
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
   
-  const usersPerPage = 10; // sayfa başına max kullanıcı
+  const usersPerPage = 20; // sayfa başına max kullanıcı
   let currentPage = 1; // default olarak ilk sayfayı yükleyelim
   
   // kullanıcıları listeleyelim
@@ -76,12 +76,7 @@
       displayUsers();
     }
   });
-
-  // Sayfa yüklendiğinde kullanıcıları göster
-  displayUsers();
-  sendRequest();
-
-  
+ 
   // tıklanan elemanı tespit etme
   userListElement.addEventListener('click', (event) => {
     var userInfo = null
@@ -120,7 +115,6 @@
 
   // düzenleme panelini gösterme
   function openPanel() {
-    closeListPanel()
     const panel = document.getElementById('userPanel');
     panel.classList.add('active');
   }
@@ -135,9 +129,4 @@
   const closeButton = document.getElementById('closeBtn');
   closeButton.addEventListener('click', () => {
     closePanel();
-  });
-  // MainMenu butonuna tıklama olayı ekleme
-  const mainMenuBtn = document.getElementById('mainMenuBtn');
-  mainMenuBtn.addEventListener('click', () => {
-    window.location.href = "main.html"
   });

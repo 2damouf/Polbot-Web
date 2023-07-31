@@ -1,3 +1,6 @@
+function setPanel(name){
+    changeHeader(name);
+}
 // dil değiştirme fonksiyonu
 function changeLanguage(language) {
     if (language === 'tr') {
@@ -91,3 +94,43 @@ function exitFunction() {
     localStorage.removeItem('token');
     window.location.href = 'login.html'
 }
+
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@ DYNAMIC HEADER CHANGE @@@@@@@@@@@@@@@@@@@@@@@@@@ */ 
+function changeHeader(name) {
+    console.log(name)
+    const dynamicTitle = document.getElementById('dynamicTextContainer');
+    const waitingList = document.getElementById('listPanel');
+    const userPanel = document.getElementById('userPanel');
+    const newCustomerPanel = document.getElementById('newCustomerPanel');
+
+    if (name === "showNewCustomer"){
+        dynamicTitle.innerText = `Yeni Müşteri Ekle`
+        waitingList.classList.remove('active');
+        userPanel.classList.remove('active');
+        newCustomerPanel.classList.add('active');
+    } else if (name === "showMainMenu"){
+        dynamicTitle.innerText = `Ana Menü`
+        waitingList.classList.remove('active');
+        userPanel.classList.remove('active');
+        newCustomerPanel.classList.remove('active');
+    } else if (name === "showWaitingList") {
+        dynamicTitle.innerText = `Bekleyen Müşteriler`;
+        waitingList.classList.add('active');
+        newCustomerPanel.classList.remove('active');
+        getCustomerListRequest();
+        displayUsers();
+    } else if (name === "showBookedList") {
+        dynamicTitle.innerText = `Tamamlanan Randevular`;
+        waitingList.classList.remove('active');
+        userPanel.classList.remove('active');
+        newCustomerPanel.classList.remove('active');
+    } else if (name === "showSettings") {
+        dynamicTitle.innerText = `Ayarlar`;
+        waitingList.classList.remove('active');
+        userPanel.classList.remove('active');
+        newCustomerPanel.classList.remove('active');
+    }   
+}
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@ DYNAMIC HEADER CHANGE @@@@@@@@@@@@@@@@@@@@@@@@@@ */ 
+

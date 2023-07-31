@@ -1,12 +1,9 @@
-const form = document.getElementById('form');
-const fullname = document.getElementById('fullname');
-const passport = document.getElementById('passport');
-const mail = document.getElementById('mail');
-const username = document.getElementById('reg-username');
-const password = document.getElementById('reg-password');
-const repassword = document.getElementById('reg-repassword');
-const birthdate = document.getElementById('birthdate');
-const phone = document.getElementById('phone');
+const form = document.getElementById('new-customer-userform');
+const fullname = document.getElementById('reg-input-fullname');
+const passport = document.getElementById('reg-input-passport');
+const mail = document.getElementById('reg-input-mail');
+const birthdate = document.getElementById('reg-input-birthdate');
+const phone = document.getElementById('reg-input-phone');
 var validation = false
 
 // eğer validation hata verirse
@@ -72,8 +69,9 @@ function checkPasswords(input1, input2) {
 
 // her şey sorunsuz ise bitirelim
 form.addEventListener('submit',function(e){
+    console.log('tıklandı buna')
     e.preventDefault();
-    checkRequired([username,fullname,passport,passport,password,repassword,birthdate,phone]);
+    checkRequired([fullname,passport,passport,birthdate,phone]);
     const validate = validateEmail(mail.value);
     console.log(validate);
     if (validate == null) {
@@ -81,20 +79,8 @@ form.addEventListener('submit',function(e){
     } else {
         success(mail);
     }
-
-    if (username.value !== '') {
-        checkLength(username, 4, 15);
-    }
-    if (password.value !== '') {
-        checkLength(password, 5, 12);
-    }
-    if (repassword.value !== '') {
-        checkLength(repassword, 5, 12);
-    }
-    console.log(password + ' '+ repassword)
-    checkPasswords(password, repassword);
     checkPhone(phone);
-    sendRequest();
+    newCustomerSendRequest();
 });
 
 
@@ -102,20 +88,21 @@ form.addEventListener('submit',function(e){
 
 
 // kayıt için istek yollama fonksiyonu
-async function sendRequest(){
+async function newCustomerSendRequest(){
+    console.log('request')
     if (validation !== true) {
         alert('Lütfen alanları düzgün doldurun.')
         return;
     }
-    const fullName = document.getElementById('fullname').value
-    const mailAdress = document.getElementById('mail').value
-    const passport = document.getElementById('passport').value
-    const phoneNumber = document.getElementById('phone').value
-    const birthDate = document.getElementById('birthdate').value
-    const userName = document.getElementById('username').value
-    const password = document.getElementById('password').value
-    const repassword = document.getElementById('repassword').value
 
+
+    const fullName = document.getElementById('reg-input-fullname').value
+    const mailAdress = document.getElementById('reg-input-mail').value
+    const passport = document.getElementById('reg-input-passport').value
+    const phoneNumber = document.getElementById('reg-input-birthdate').value
+    const birthDate = document.getElementById('reg-input-phone').value
+
+    
     const token = localStorage.getItem('token')
     const result = await fetch('http://localhost:9999/apiv2/new-customer', {
         method: 'POST',
@@ -128,31 +115,18 @@ async function sendRequest(){
             mailAdress,
             passport,
             phoneNumber,
-            birthDate,
-            userName,
-            password,
-            repassword
+            birthDate
         })
     }).then((res) => res.json())
 
     if(result.status === 'ok'){
         alert('Yeni Kişi Eklendi!')
-        document.getElementById('fullname').value = "";
-        document.getElementById('mail').value = "";
-        document.getElementById('passport').value = "";
-        document.getElementById('phone').value = "";
-        document.getElementById('birthdate').value = "";
-        document.getElementById('username').value = "";
-        document.getElementById('password').value = "";
-        document.getElementById('repassword').value = "";
+       /* document.getElementById('reg-input-fullname').value = "";
+        document.getElementById('reg-input-passport').value = "";
+        document.getElementById('reg-input-mail').value = "";
+        document.getElementById('reg-input-birthdate').value = "";
+        document.getElementById('reg-input-phone').value = "";*/
     } else {
         alert(result.error)
     }
 };
-
-// ana menüye dönme
-const mainMenuBtn = document.getElementById("mainMenuBtn");
-mainMenuBtn.addEventListener('click', () => {
-    window.location.href = "main.html"
-})
-

@@ -1,0 +1,81 @@
+  /* Panel stilleri */
+  .panel-new-customer {
+    display: none;
+    height: 820px;
+    width: 1000px;
+    text-align: center;
+    border: 2px solid #ccc;
+    padding: 30px; /* Konteyneri biraz daha büyütmek için padding değerini arttırdık */
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    margin: 20px; /* Sayfa kenarlarından boşluk bırakmak için margin değerini ekledik */
+    position: relative; /* Paneli baz alarak kapatma butonunu konumlandıracağız */
+  }
+
+  .panel-new-customer-content {
+    /* Diğer stil tanımlamaları */
+    margin-top: 20px;
+  }
+
+.panel-new-customer.active {
+  display: block;
+}
+
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  form label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  form input {
+    width: 300px;
+    height: 30px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+  }
+
+  
+#new-customer-userform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* TextBox stilleri */
+input[type="text"] {
+  width: 300px; /* TextBox genişliğini istediğiniz gibi ayarlayabilirsiniz */
+  height: 40px; /* TextBox yüksekliğini istediğiniz gibi ayarlayabilirsiniz */
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Kaydet butonu stilleri */
+#reg-input-submitBtn {
+  width: 320px;
+  height: 40px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#reg-input-submitBtn {
+  background-color: #45a049;
+}

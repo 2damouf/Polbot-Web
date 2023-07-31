@@ -1,120 +1,159 @@
-body {
-    height: 100vh;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #74b9ff, #d63031);
-}
+@media (min-width: 768px) {
 
-.panel {
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-}
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        background: linear-gradient(45deg, #6e09eb,#5d437d);
+    }
 
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-}
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@ LEFT CONTAINER @@@@@@@@@@@@@@@@@@@@@@@@@@ */ 
+    .left-container {
+        width: 15%;
+        background: rgba(26,26,26,255);
+        color: white;
+        padding-left: 30px;
+        height: 100vh;
+    }
+    
+    .list {
+        
+        list-style: none;
+        padding: 0;
+    }
+    
+    .list li {
+        width: 250px;
+        height: 28px;
+        font-size: 20px; /* Örnek olarak 16 piksel boyutunda bir font seçtik */
+        margin-top: 20px;
+        margin-bottom: 20px; /* Li öğeleri arasında 10 piksel boşluk bırakmak için */
+        display: flex;
+        cursor: pointer;
+        align-items: center;
+    }
 
-.button {
-    padding: 15px 30px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    font-weight: bold;
-}
+    .list li:hover {
+        background-color:  rgba(26,26,26,255);
+    }
+    
+    .item {
+        font-family: "Helvetica"; /* Örnek olarak Courier New fontunu seçtik */
+        font-size: 16px; /* Örnek olarak 20 piksel boyutunda bir font seçtik */
+    }
+    
+    .list li i {
+        margin-right: 10px; /* Not defteri ikonu ile metin arasındaki boşluğu ayarlamak için */
+    }
+    
+    .add-note-button {
+        margin-top: 20px;
+    }
+    
+    .add-button {
+        font-family: "Helvetica";
+        width: 260px;
+        padding: 8px;
+        font-size: 14px;
+        background-color: #01a72e;
+        border-radius: 0 5px 5px 0;
+        border-radius: 25px;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .add-button:hover {
+        background-color: #7CB342;
+    }
 
-.customer-button {
-    background-color: #4CAF50;
-    color: white;
-    width: 200px;
-    height: 130px;
-    border-radius: 20px;
-    padding: 10px 20px;
-}
-
-.newclient-button {
-    background-color: #4db51d;
-    color: white;
-    width: 200px;
-    height: 130px;
-    border-radius: 20px;
-    padding: 10px 20px;
-}
-
-.reservation-button {
-    background-color: #2196F3;
-    color: white;
-    width: 200px;
-    height: 130px;
-    border-radius: 20px;
-    padding: 10px 20px;
-}
-
-.settings-button {
-    background-color: #ff4fd6;
-    color: white;
-    width: 200px;
-    height: 130px;
-    border-radius: 20px;
-    padding: 10px 20px;
-}
-.exit-icon {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 10px 15px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    background-color: #FF0000; /* Kırmızı renk */
-    color: white;
-    border-radius: 20px;
-    padding: 10px 20px;
-}
-
-.language-container {
-    position: absolute;
-    top: 10px;
-    left: 20px;
-    display: flex; /* Flex düzeni aktif */
-}
-
-.flag-icon {
-    width: 32px;
-    height: 24px;
-    margin-right: 10px;
-    cursor: pointer;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-.tr-flag {
-    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Flag_of_Turkey.svg/2000px-Flag_of_Turkey.svg.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
-.gb-flag {
-    background-image: url("https://i4.hurimg.com/i/hurriyet/75/1200x675/55ea65fdf018fbb8f87d5486.jpg");
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
-.flag-icon.small {
-    width: 24px;
-    height: 14px;
-}
+    
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@ LEFT CONTAINER @@@@@@@@@@@@@@@@@@@@@@@@@@ */ 
 
 
-/* Diğer stiller */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@ MIDDLE CONTAINER @@@@@@@@@@@@@@@@@@@@@@@@@@ */ 
+    .middle-container {
+        display: flex;
+        flex-direction: column;
+        width: 25%;
+        height: 100vh;
+        background:#f8f8f8;
+    }
+
+    .menu-title {
+        margin-top: 10px;
+        font-size: 28px; /* Daha büyük bir font boyutu */
+        font-family: "Poppins", sans-serif; /* Güzel bir font */
+        margin-bottom: 20px; /* Başlık ile listedeki öğeler arasında boşluk bırakmak için */
+        color: Black;
+    }
+
+    .sub-container {
+        position: relative;
+        background-color: #f1f1f1;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        padding: 10px;
+    }
+
+    #dynamicTextContainer {
+        width: 92%;
+        background-color: #ccc;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        bottom: 10px;
+        left: 10px;
+        position: absolute;
+        font-size: 23px;
+    }
+    
+    #dynamicText {
+        margin: 0;
+    }
+
+    
+    .buttons {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+    }
+    
+    button {
+        font-size: 10px;
+        background-color: #f1f1f1;
+        border: none;
+        border-radius: 35%;
+        padding: 10px;
+        cursor: pointer;
+    }
+    
+    button:hover {
+        background-color: #ddd;
+    }
+
+
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@ MIDDLE CONTAINER @@@@@@@@@@@@@@@@@@@@@@@@@@ */ 
+    
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@ RIGHT CONTAINER @@@@@@@@@@@@@@@@@@@@@@@@@@ */ 
+    .right-container {
+        background: rgba(255,255,255,255);
+        flex: 1;
+        height: 100vh;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+    
+
+    
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@ RIGHT CONTAINER @@@@@@@@@@@@@@@@@@@@@@@@@@ */ 
+   
+  }
+
+

@@ -1,27 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="css/mainstyle.css">
-    <title>Ana Menu</title>
-</head>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PolBot Yönetim Paneli</title>
+        <link rel="stylesheet" href="/css/mainstyle.css">
+        <link rel="stylesheet" href="/css/customers.css">
+        <link rel="stylesheet" href="/css/newcustomer.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.1.1/marked.min.js"></script>
+        <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+        <script src="/scripts/mainscript.js" defer></script>
+        <script src="/scripts/customers.js" defer></script>
+        <script src="/scripts/newcustomer.js" defer></script>
 
-<body>
-    <div class="container">
-        <button class="button customer-button" id="customer" onclick="window.location.href='customers.html'">Müşterileri Yönet</button>
-        <button class="button newclient-button" id="newClient" onclick="window.location.href='newcustomer.html'">Yeni Müşteri Ekle</button>
-        <button class="button reservation-button" id="reservation" onclick="window.location.href='booked.html'">Alınan Randevular</button>
-        <button class="button settings-button" id="setting" onclick="window.location.href='settings.html'">Ayarlar</button>
-        <i class="fas fa-sign-out exit-icon" onclick="exitFunction()"></i>
-    </div>
+    </head>
+    <body>
+        <div class="left-container">
+            <ul class="list">
+                <li><span class="item">Welcome Admin</span></li>
+                <div class="add-note-button">
+                    <button class="add-button" onclick="setPanel('showNewCustomer')"><i class="fas fa-plus"></i> Yeni Müşteri Ekle</button>
+                </div>
+                <li onclick="setPanel('showMainMenu')"><i class="fas fa-house"></i> <span class="item" onclick="setPanel('mainmenu')">Ana Menü</span></li>
+                <li onclick="setPanel('showWaitingList')"><i class="fas fa-user-large"></i> <span class="item" onclick="setPanel('waitinglist')">Bekleyen Müşteriler</span></li>
+                <li onclick="setPanel('showBookedList')"><i class="fas fa-book"></i> <span class="item" onclick="setPanel('bookedlist')">Tamamlanan Randevular</span></li>
+                <li onclick="setPanel('showSettings')"><i class="fas fa-gear"></i> <span class="item" onclick="setPanel('settings')">Ayarlar</span></li>
+                <li onclick="setPanel('logout')"><i class="fas fa-sign-out exit-icon"></i> <span class="item" onclick="setPanel('logout')">Çıkış Yap</span></li>
+            </ul>
+        </div>
 
-    <div class="language-container">
-        <div class="flag-icon tr-flag" id="flag-tr" style="opacity: 0.5" onclick="changeLanguage('tr')"></div>
-        <div class="flag-icon gb-flag" id="flag-gb" style="opacity: 1" onclick="changeLanguage('en')"></div>
-    </div>
+        <div class="middle-container">
+            <div class="sub-container" style="height: 20%">
+                <h1 class="menu-title">PolBot Yönetici Paneli</h1>
+                <div id="dynamicTextContainer">
+                    <div id="dynamicText">Ana Menü</div>
+                </div>
+            </div>
 
-    <script src="scripts/mainscript.js"></script>
-</body>
+                
+            <div class="sub-container" style="height: 80%">
+                <div class="container" id="listPanel" >
+                    <div class="userListContainer">
+                    <ul id="userList"></ul>
+                    </div>
+                    <div class="pagination">
+                    <button id="prevBtn" disabled>&#8249; Geri</button>
+                    <button id="nextBtn">İleri &#8250;</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+
+
+        <div class="right-container">
+
+            <div class="panel" id="userPanel">
+                <button id="closeBtn">&#10006;</button>
+                <div class="panel-content">
+                  <h2>Kullanıcı Detayları</h2>
+                  <form id="userForm">
+                    <label for="fullNameInput">Ad Soyad</label>
+                    <input type="text" placeholder="Ad Soyad" id="fullNameInput" required>
+                    <label for="emailInput">E-posta Adresi</label>
+                    <input type="text" placeholder="E-posta Adresi" id="emailInput" required>
+                    <label for="passportInput">Pasaport Numarası</label>
+                    <input type="text" placeholder="Pasaport Numarası" id="passportInput" required>
+                    <label for="phoneInput">Telefon Numarası</label>
+                    <input type="text" placeholder="Telefon Numarası" id="phoneInput" required>
+                    <div class="form-actions">
+                      <button type="submit" id="saveBtn">Güncelle</button>
+                      <button type="submit" id="deleteBtn">Sil</button>
+                    </div>
+                  </form>
+                </div>
+            </div>
+              
+            <div class="panel-new-customer" id="newCustomerPanel">
+                <div class="panel-content">
+                    <h2>Yeni Müşteri Ekle</h2>
+                        <form id="new-customer-userform" novalidate>
+                            <label for="fullname">İsim - Soy isim</label>
+                            <input type="text" class="form-control" id="reg-input-fullname" placeholder="Enter Name - Surname">
+                            <label for="mail">Mail Adresi</label>
+                            <input type="email" class="form-control" id="reg-input-mail" placeholder="Enter Mail Adress">
+                            <label for="passport">Pasaport</label>
+                            <input type="text" class="form-control" id="reg-input-passport" placeholder="Enter Passport">
+                            <label for="phone">Telefon</label>
+                            <input type="text" class="form-control" id="reg-input-phone" placeholder="Enter Phone Number">
+                            <label for="birthdate">Doğum Tarihi</label>
+                            <input type="text" class="form-control" id="reg-input-birthdate" placeholder="TODO:Put calendar here or format txt for birth date input">
+                            <button type="submit" id="reg-input-submitBtn" class="btn btn-primary btn-block">Yeni Kişi Ekle</button>
+                        </form>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+    </body>
 </html>
+
